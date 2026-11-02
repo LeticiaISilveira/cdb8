@@ -167,6 +167,7 @@
         position: relative;
         width: 100%;
         margin-inline: auto;
+        display: flex;
         padding: 1.2rem;
         border: 2px solid #a97835;
         border-radius: 24px;
@@ -259,9 +260,11 @@
       .frame-content {
         position: relative;
         z-index: 1;
+        flex: 1;
         min-height: 300px;
         display: grid;
-        align-content: center;
+        grid-template-rows: auto minmax(2.5em, auto) minmax(8em, 1fr) auto;
+        align-content: stretch;
         justify-items: center;
         padding: 1.5rem;
         border: 4px double #c18b3b;
@@ -283,6 +286,9 @@
       }
 
       .frame-content h2 {
+        min-height: 2.5em;
+        display: grid;
+        align-items: center;
         margin: 0;
         color: #593f45;
         font-family: "Fraunces", serif;
@@ -290,7 +296,10 @@
         font-weight: 600;
       }
 
-      .frame-content p {
+      .frame-content p:not(.frame-kicker) {
+        min-height: 8em;
+        display: grid;
+        align-items: center;
         max-width: 28ch;
         margin: 0.65rem 0 1.2rem;
         color: #75676a;
@@ -301,6 +310,7 @@
       }
 
       .frame-content .frame-action {
+        align-self: end;
         min-height: 38px;
         padding: 0.55rem 1.2rem;
         border-color: #b98c43;
