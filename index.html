@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#B2627D">
+    <title>Paleta de cores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Poiret+One&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --deg: 180deg;
+        color-scheme: light;
+        font-family: "Sora", sans-serif;
+        color: #33443d;
+        background: #F2E7EB;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        background:
+          radial-gradient(ellipse at 12% 12%, rgb(178 98 125 / 12%), transparent 32%),
+          radial-gradient(ellipse at 88% 88%, rgb(132 178 98 / 14%), transparent 34%),
+          radial-gradient(ellipse at center, transparent 42%, rgb(119 81 53 / 16%) 100%),
+          linear-gradient(135deg, #F2E7EB, #EFF4EB);
+      }
+
+      main {
+        position: relative;
+        width: min(100%, 680px);
+        padding: clamp(1.5rem, 5vw, 3rem);
+        border: 1px solid #c9ad76;
+        border-radius: 30px;
+        background:
+          radial-gradient(ellipse at 50% 0, rgb(255 255 255 / 90%), transparent 68%),
+          linear-gradient(145deg, #fffdfa, #fff9f5 55%, #f8f6ec);
+        box-shadow:
+          0 24px 70px rgb(83 55 54 / 16%),
+          inset 0 0 0 5px rgb(255 255 255 / 75%),
+          inset 0 0 0 6px rgb(191 163 96 / 25%);
+      }
+
+      main::before {
+        position: absolute;
+        inset: 12px;
+        border: 1px solid rgb(191 163 96 / 40%);
+        border-radius: 22px;
+        content: "";
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        margin: 0 0 0.7rem;
+        color: #98614f;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        color: #593f45;
+        font-family: "Poiret One", sans-serif;
+        font-weight: 400;
+        font-size: clamp(2rem, 6vw, 3rem);
+        letter-spacing: -0.035em;
+      }
+
+      .intro {
+        margin: 0.75rem 0 2rem;
+        color: #75676a;
+        line-height: 1.6;
+      }
+
+      .ornament {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        margin: 1.8rem 0;
+        color: #b28b4d;
+        font-family: "Fraunces", serif;
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+
+      .ornament::before,
+      .ornament::after {
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, transparent, rgb(178 139 77 / 65%), transparent);
+        content: "";
+      }
+
+      .swatches {
+        width: min(100%, 360px);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-inline: auto;
+      }
+
+      .swatch {
+        width: 75%;
+        aspect-ratio: 1;
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 0.2rem;
+        padding: 0.9rem;
+        border: 1px solid rgb(255 255 255 / 75%);
+        border-radius: 48% 48% 16px 16px;
+        box-shadow:
+          inset 0 0 0 4px rgb(255 255 255 / 25%),
+          0 5px 14px rgb(82 59 51 / 10%);
+        font-size: 0.72rem;
+        font-weight: 600;
+        transition: transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .swatch:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          inset 0 0 0 4px rgb(255 255 255 / 32%),
+          0 10px 22px rgb(82 59 51 / 16%);
+      }
+
+      .swatch span {
+        opacity: 0.75;
+        font-weight: 500;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .pink { background: #E5C3CE; color: #543642; }
+      .sage { background: #d1e5c3; color: #34452b; }
+      .berry { background: #B2627D; color: #fff; }
+      .leaf { background: #84B262; color: #26351d; }
+
+      .component-label {
+        margin: 2rem 0 0.8rem;
+        color: #98614f;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .frame-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+        margin-top: 3rem;
+      }
+
+      .frame-card {
+        position: relative;
+        width: 100%;
+        margin-inline: auto;
+        padding: 1.2rem;
+        border: 2px solid #a97835;
+        border-radius: 24px;
+        background:
+          radial-gradient(ellipse at 50% 0, #fffdf6, transparent 62%),
+          linear-gradient(135deg, #f4e3c2, #fffaf0 40%, #f1dfbd);
+        box-shadow:
+          0 12px 30px rgb(83 55 54 / 14%),
+          inset 0 0 0 4px #fff9eb,
+          inset 0 0 0 6px #c79a51,
+          inset 0 0 0 8px #fff7e6,
+          inset 0 0 0 9px #a97835;
+      }
+
+      .frame-card::before {
+        position: absolute;
+        inset: 13px;
+        border: 1px solid rgb(169 119 43 / 58%);
+        border-radius: 17px;
+        content: "";
+        pointer-events: none;
+      }
+
+      .frame-flourish {
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        width: min(88%, 360px);
+        height: 44px;
+        transform: translateX(-50%);
+      }
+
+      .frame-flourish.top {
+        top: -23px;
+      }
+
+      .frame-flourish.bottom {
+        bottom: -23px;
+        transform: translateX(-50%) rotate(180deg);
+      }
+
+      .frame-flourish svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        filter: drop-shadow(0 1px 0 #fff4d2);
+      }
+
+      .frame-flourish path,
+      .frame-flourish circle {
+        fill: none;
+        stroke: #a97835;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2;
+      }
+
+      .frame-flourish .fine-line {
+        stroke: #d3b36b;
+        stroke-width: 1;
+      }
+
+      .frame-gem {
+        position: absolute;
+        z-index: 3;
+        left: 50%;
+        width: 25px;
+        height: 37px;
+        border: 2px solid #9a641e;
+        border-radius: 48% 48% 45% 45%;
+        background:
+          linear-gradient(110deg, transparent 20%, rgb(255 255 255 / 82%) 42%, transparent 58%),
+          linear-gradient(135deg, #ffb5d1, #e83f91 48%, #9e1459);
+        box-shadow:
+          0 0 0 2px #f4d893,
+          0 2px 6px rgb(78 39 40 / 30%),
+          inset 0 0 0 2px rgb(255 224 238 / 65%);
+        transform: translateX(-50%);
+      }
+
+      .frame-gem.top {
+        top: -21px;
+      }
+
+      .frame-gem.bottom {
+        bottom: -21px;
+        transform: translateX(-50%) rotate(180deg);
+      }
+
+      .frame-content {
+        position: relative;
+        z-index: 1;
+        min-height: 300px;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        padding: 1.5rem;
+        border: 4px double #c18b3b;
+        border-radius: 16px;
+        background:
+          radial-gradient(ellipse at 50% 0, rgb(255 255 255 / 95%), transparent 72%),
+          linear-gradient(145deg, #fffefa, #fff 58%, #fbf8f0);
+        box-shadow: inset 0 0 0 4px rgb(239 217 174 / 45%);
+        text-align: center;
+      }
+
+      .frame-content .frame-kicker {
+        margin: 0 0 0.7rem;
+        color: #9e7640;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .frame-content h2 {
+        margin: 0;
+        color: #593f45;
+        font-family: "Fraunces", serif;
+        font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+        font-weight: 600;
+      }
+
+      .frame-content p {
+        max-width: 28ch;
+        margin: 0.65rem 0 1.2rem;
+        color: #75676a;
+        font-family: "Fraunces", serif;
+        font-size: 1rem;
+        font-style: italic;
+        line-height: 1.5;
+      }
+
+      .frame-content .frame-action {
+        min-height: 38px;
+        padding: 0.55rem 1.2rem;
+        border-color: #b98c43;
+        background: linear-gradient(180deg, #f5e5be, #d9bc79 50%, #ead7a6);
+        color: #62491f;
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        box-shadow: inset 0 1px 0 #fff, 0 2px 5px rgb(83 55 54 / 12%);
+      }
+
+      .frame-content .frame-action:hover {
+        filter: brightness(1.05);
+      }
+
+      @media (max-width: 620px) {
+        .frame-cards {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .frame-card {
+          width: min(100%, 430px);
+          padding: 1.1rem;
+        }
+
+        .frame-content {
+          min-height: 250px;
+          padding: 1.5rem;
+        }
+      }
+
+      @media (min-width: 621px) and (max-width: 760px) {
+        .frame-card {
+          padding: 1rem;
+        }
+
+        .frame-content {
+          min-height: 270px;
+          padding: 1.2rem 0.8rem;
+        }
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-top: 1.8rem;
+      }
+
+      button {
+        min-height: 48px;
+        padding: 0.8rem 2rem;
+        border: 1px solid #9c8249;
+        border-radius: 999px;
+        background: #bfa360;
+        color: #493b21;
+        font-family: "Poiret One", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        text-shadow: none;
+        transition: filter 180ms ease, transform 180ms ease;
+      }
+
+      button:hover {
+        filter: brightness(1.06);
+        transform: translateY(-2px);
+      }
+
+      button:active {
+        filter: brightness(0.94);
+        transform: translateY(0);
+      }
+
+      button:focus-visible {
+        outline: 3px solid #84B262;
+        outline-offset: 3px;
+      }
+
+      button.secondary {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        background:
+          linear-gradient(115deg, transparent 20%, rgb(255 250 222 / 16%) 45%, rgb(255 250 222 / 6%) 52%, transparent 72%),
+          linear-gradient(var(--deg), #a88d4e 0%, #bfa360 20%, #cca752 42%, #e1c77e 50%, #cca752 58%, #bfa360 80%, #a88d4e 100%);
+        border-color: #9c8249;
+        color: #493b21;
+        text-shadow: none;
+        box-shadow:
+          inset 0 1px 0 rgb(255 250 222 / 55%),
+          inset 0 -1px 0 rgb(91 68 27 / 18%);
+      }
+
+      button.secondary::after {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        background: radial-gradient(
+          circle at var(--light-x, 50%) var(--light-y, 50%),
+          rgb(255 255 235 / 82%),
+          rgb(255 243 190 / 38%) 16%,
+          transparent 55%
+        );
+        content: "";
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 180ms ease;
+      }
+
+      button.secondary span {
+        position: relative;
+        z-index: 1;
+      }
+
+      button.secondary:hover::after {
+        opacity: 1;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 1rem;
+        }
+
+        main {
+          padding: 2rem 1.5rem;
+        }
+
+        .swatches {
+          width: min(100%, 300px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Design system · Dashboard</p>
+      <h1>Uma paleta Rococó</h1>
+      <p class="intro">
+        Uma linguagem visual ornamental, com tons suaves, molduras delicadas
+        e detalhes dourados.
+      </p>
+
+      <div class="ornament" aria-hidden="true">❧</div>
+
+      <section class="swatches" aria-label="Cores da paleta">
+        <div class="swatch pink">Rosa suave <span>#E5C3CE</span></div>
+        <div class="swatch sage">Sálvia <span>#d1e5c3</span></div>
+        <div class="swatch berry">Framboesa <span>#B2627D</span></div>
+        <div class="swatch leaf">Verde folha <span>#84B262</span></div>
+      </section>
+
+      <p class="component-label">Componente · Card com moldura Rococó</p>
+      <section class="frame-cards" aria-label="Exemplos de cards com moldura Rococó">
+        <article class="frame-card" aria-labelledby="frame-card-title-1">
+          <div class="frame-flourish top" aria-hidden="true">
+            <svg viewBox="0 0 400 64">
+              <path d="M8 32 C32 32 31 16 48 16 C64 16 62 34 48 34 C37 34 38 24 46 24 C54 24 54 30 49 30 M48 32 C76 32 72 46 93 46 C111 46 111 19 130 19 C145 19 145 38 132 38 C121 38 122 28 130 28 C136 28 137 33 132 34 M93 46 C113 46 114 32 148 32 C166 32 170 21 183 21 C192 21 195 27 200 32"/>
+              <path d="M392 32 C368 32 369 16 352 16 C336 16 338 34 352 34 C363 34 362 24 354 24 C346 24 346 30 351 30 M352 32 C324 32 328 46 307 46 C289 46 289 19 270 19 C255 19 255 38 268 38 C279 38 278 28 270 28 C264 28 263 33 268 34 M307 46 C287 46 286 32 252 32 C234 32 230 21 217 21 C208 21 205 27 200 32"/>
+              <path class="fine-line" d="M8 38 C58 38 58 51 84 51 C112 51 117 43 145 39 M392 38 C342 38 342 51 316 51 C288 51 283 43 255 39"/>
+              <circle cx="92" cy="31" r="3"/><circle cx="308" cy="31" r="3"/>
+              <circle cx="164" cy="30" r="2"/><circle cx="236" cy="30" r="2"/>
+            </svg>
+          </div>
+          <span class="frame-gem top" aria-hidden="true"></span>
+          <div class="frame-flourish bottom" aria-hidden="true">
+            <svg viewBox="0 0 400 64">
+              <path d="M8 32 C32 32 31 16 48 16 C64 16 62 34 48 34 C37 34 38 24 46 24 C54 24 54 30 49 30 M48 32 C76 32 72 46 93 46 C111 46 111 19 130 19 C145 19 145 38 132 38 C121 38 122 28 130 28 C136 28 137 33 132 34 M93 46 C113 46 114 32 148 32 C166 32 170 21 183 21 C192 21 195 27 200 32"/>
+              <path d="M392 32 C368 32 369 16 352 16 C336 16 338 34 352 34 C363 34 362 24 354 24 C346 24 346 30 351 30 M352 32 C324 32 328 46 307 46 C289 46 289 19 270 19 C255 19 255 38 268 38 C279 38 278 28 270 28 C264 28 263 33 268 34 M307 46 C287 46 286 32 252 32 C234 32 230 21 217 21 C208 21 205 27 200 32"/>
+              <path class="fine-line" d="M8 38 C58 38 58 51 84 51 C112 51 117 43 145 39 M392 38 C342 38 342 51 316 51 C288 51 283 43 255 39"/>
+              <circle cx="92" cy="31" r="3"/><circle cx="308" cy="31" r="3"/>
+              <circle cx="164" cy="30" r="2"/><circle cx="236" cy="30" r="2"/>
+            </svg>
+          </div>
+          <span class="frame-gem bottom" aria-hidden="true"></span>
+          <div class="frame-content">
+            <p class="frame-kicker">Lorem ipsum</p>
+            <h2 id="frame-card-title-1">Lorem ipsum dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button class="frame-action" type="button">Lorem ipsum</button>
+          </div>
+        </article>
+
+        <article class="frame-card" aria-labelledby="frame-card-title-2">
+          <div class="frame-flourish top" aria-hidden="true">
+            <svg viewBox="0 0 400 64">
+              <path d="M8 32 C32 32 31 16 48 16 C64 16 62 34 48 34 C37 34 38 24 46 24 C54 24 54 30 49 30 M48 32 C76 32 72 46 93 46 C111 46 111 19 130 19 C145 19 145 38 132 38 C121 38 122 28 130 28 C136 28 137 33 132 34 M93 46 C113 46 114 32 148 32 C166 32 170 21 183 21 C192 21 195 27 200 32"/>
+              <path d="M392 32 C368 32 369 16 352 16 C336 16 338 34 352 34 C363 34 362 24 354 24 C346 24 346 30 351 30 M352 32 C324 32 328 46 307 46 C289 46 289 19 270 19 C255 19 255 38 268 38 C279 38 278 28 270 28 C264 28 263 33 268 34 M307 46 C287 46 286 32 252 32 C234 32 230 21 217 21 C208 21 205 27 200 32"/>
+              <path class="fine-line" d="M8 38 C58 38 58 51 84 51 C112 51 117 43 145 39 M392 38 C342 38 342 51 316 51 C288 51 283 43 255 39"/>
+              <circle cx="92" cy="31" r="3"/><circle cx="308" cy="31" r="3"/>
+              <circle cx="164" cy="30" r="2"/><circle cx="236" cy="30" r="2"/>
+            </svg>
+          </div>
+          <span class="frame-gem top" aria-hidden="true"></span>
+          <div class="frame-flourish bottom" aria-hidden="true">
+            <svg viewBox="0 0 400 64">
+              <path d="M8 32 C32 32 31 16 48 16 C64 16 62 34 48 34 C37 34 38 24 46 24 C54 24 54 30 49 30 M48 32 C76 32 72 46 93 46 C111 46 111 19 130 19 C145 19 145 38 132 38 C121 38 122 28 130 28 C136 28 137 33 132 34 M93 46 C113 46 114 32 148 32 C166 32 170 21 183 21 C192 21 195 27 200 32"/>
+              <path d="M392 32 C368 32 369 16 352 16 C336 16 338 34 352 34 C363 34 362 24 354 24 C346 24 346 30 351 30 M352 32 C324 32 328 46 307 46 C289 46 289 19 270 19 C255 19 255 38 268 38 C279 38 278 28 270 28 C264 28 263 33 268 34 M307 46 C287 46 286 32 252 32 C234 32 230 21 217 21 C208 21 205 27 200 32"/>
+              <path class="fine-line" d="M8 38 C58 38 58 51 84 51 C112 51 117 43 145 39 M392 38 C342 38 342 51 316 51 C288 51 283 43 255 39"/>
+              <circle cx="92" cy="31" r="3"/><circle cx="308" cy="31" r="3"/>
+              <circle cx="164" cy="30" r="2"/><circle cx="236" cy="30" r="2"/>
+            </svg>
+          </div>
+          <span class="frame-gem bottom" aria-hidden="true"></span>
+          <div class="frame-content">
+            <p class="frame-kicker">Lorem ipsum</p>
+            <h2 id="frame-card-title-2">Dolor sit amet</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+            <button class="frame-action" type="button">Lorem ipsum</button>
+          </div>
+        </article>
+      </section>
+
+      <div class="actions">
+        <button class="secondary" type="button"><span>Botão</span></button>
+      </div>
+    </main>
+    <script>
+      const goldButton = document.querySelector(".secondary");
+
+      goldButton.addEventListener("pointermove", (event) => {
+        const bounds = goldButton.getBoundingClientRect();
+        const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+        const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+
+        goldButton.style.setProperty("--light-x", `${x}%`);
+        goldButton.style.setProperty("--light-y", `${y}%`);
+      });
+
+      goldButton.addEventListener("pointerleave", () => {
+        goldButton.style.removeProperty("--light-x");
+        goldButton.style.removeProperty("--light-y");
+      });
+    </script>
+  </body>
+</html>
