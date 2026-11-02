@@ -13,6 +13,14 @@
         --deg: 180deg;
         --page-pink: #E8CAD4;
         --page-green: #E5EDD9;
+        --background-gradient: linear-gradient(
+          135deg,
+          #B2627D 0%,
+          #B2627D 5%,
+          #E5C3CE 30%,
+          #d1e5c3 95%,
+          #84B262 100%
+        );
         --main-background: #FEFCFA;
         --switch-track-background: #d1e5c3;
         color-scheme: light;
@@ -24,6 +32,14 @@
       :root[data-theme="green"] {
         --page-pink: #DDE9D2;
         --page-green: #E8D0D9;
+        --background-gradient: linear-gradient(
+          135deg,
+          #84B262 0%,
+          #84B262 5%,
+          #d1e5c3 70%,
+          #E5C3CE 95%,
+          #B2627D 100%
+        );
         --main-background: #F0F7F2;
         --switch-track-background: #E5C3CE;
       }
@@ -42,12 +58,7 @@
           radial-gradient(ellipse at 12% 12%, var(--top-glow, rgb(178 98 125 / 17%)), transparent 32%),
           radial-gradient(ellipse at 88% 88%, var(--bottom-glow, rgb(132 178 98 / 18%)), transparent 34%),
           radial-gradient(ellipse at center, transparent 42%, rgb(119 81 53 / 16%) 100%),
-          linear-gradient(
-            135deg,
-            var(--page-pink) 0%,
-            var(--page-pink) 70%,
-            var(--page-green) 100%
-          );
+          var(--background-gradient);
       }
 
       main {
