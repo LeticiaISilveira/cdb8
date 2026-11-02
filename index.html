@@ -11,10 +11,21 @@
     <style>
       :root {
         --deg: 180deg;
+        --page-pink: #E8CAD4;
+        --page-green: #E5EDD9;
+        --main-background: #FEFCFA;
+        --switch-track-background: #d1e5c3;
         color-scheme: light;
         font-family: "Sora", sans-serif;
         color: #33443d;
-        background: #F2E7EB;
+        background: var(--page-pink);
+      }
+
+      :root[data-theme="green"] {
+        --page-pink: #DDE9D2;
+        --page-green: #E8D0D9;
+        --main-background: #F0F7F2;
+        --switch-track-background: #E5C3CE;
       }
 
       * {
@@ -26,27 +37,98 @@
         margin: 0;
         display: grid;
         place-items: center;
-        padding: 2rem;
+        padding: 1rem;
         background:
-          radial-gradient(ellipse at 12% 12%, rgb(178 98 125 / 12%), transparent 32%),
-          radial-gradient(ellipse at 88% 88%, rgb(132 178 98 / 14%), transparent 34%),
+          radial-gradient(ellipse at 12% 12%, var(--top-glow, rgb(178 98 125 / 17%)), transparent 32%),
+          radial-gradient(ellipse at 88% 88%, var(--bottom-glow, rgb(132 178 98 / 18%)), transparent 34%),
           radial-gradient(ellipse at center, transparent 42%, rgb(119 81 53 / 16%) 100%),
-          linear-gradient(135deg, #F2E7EB, #EFF4EB);
+          linear-gradient(
+            135deg,
+            var(--page-pink) 0%,
+            var(--page-pink) 70%,
+            var(--page-green) 100%
+          );
       }
 
       main {
         position: relative;
-        width: min(100%, 680px);
-        padding: clamp(1.5rem, 5vw, 3rem);
+        width: min(100%, 1320px);
+        padding: clamp(1.1rem, 2vw, 1.75rem);
         border: 1px solid #c9ad76;
         border-radius: 30px;
-        background:
-          radial-gradient(ellipse at 50% 0, rgb(255 255 255 / 90%), transparent 68%),
-          linear-gradient(145deg, #fffdfa, #fff9f5 55%, #f8f6ec);
+        background: var(--main-background);
         box-shadow:
           0 24px 70px rgb(83 55 54 / 16%),
           inset 0 0 0 5px rgb(255 255 255 / 75%),
           inset 0 0 0 6px rgb(191 163 96 / 25%);
+      }
+
+      :root[data-theme="green"] {
+        --top-glow: rgb(132 178 98 / 18%);
+        --bottom-glow: rgb(178 98 125 / 17%);
+      }
+
+      .theme-switch {
+        position: fixed;
+        z-index: 10;
+        top: 1rem;
+        right: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        min-height: 44px;
+        padding: 0.35rem 0.8rem 0.35rem 0.45rem;
+        border: 1px solid #b98c43;
+        border-radius: 999px;
+        background: #FEFCFA;
+        color: #593f45;
+        font-family: "Sora", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0;
+        box-shadow: 0 4px 14px rgb(83 55 54 / 14%);
+      }
+
+      .theme-switch:hover {
+        filter: none;
+        transform: translateY(-1px);
+      }
+
+      .theme-switch:focus-visible {
+        outline: 3px solid #84B262;
+        outline-offset: 3px;
+      }
+
+      .theme-switch-track {
+        position: relative;
+        width: 36px;
+        height: 20px;
+        border: 1px solid #ad8b59;
+        border-radius: 999px;
+        background: var(--switch-track-background);
+        transition: background-color 180ms ease;
+      }
+
+      .theme-switch-track::after {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #84B262;
+        content: "";
+        transition: transform 180ms ease, background-color 180ms ease;
+      }
+
+      :root[data-theme="green"] .theme-switch {
+        background: #F0F7F2;
+        color: #34452b;
+      }
+
+      :root[data-theme="green"] .theme-switch-track::after {
+        background: #B2627D;
+        transform: translateX(16px);
       }
 
       main::before {
@@ -72,12 +154,12 @@
         color: #593f45;
         font-family: "Poiret One", sans-serif;
         font-weight: 400;
-        font-size: clamp(2rem, 6vw, 3rem);
+        font-size: clamp(1.9rem, 3.2vw, 2.4rem);
         letter-spacing: -0.035em;
       }
 
       .intro {
-        margin: 0.75rem 0 2rem;
+        margin: 0.45rem 0 0.8rem;
         color: #75676a;
         line-height: 1.6;
       }
@@ -86,7 +168,7 @@
         display: flex;
         align-items: center;
         gap: 0.9rem;
-        margin: 1.8rem 0;
+        margin: 0.7rem 0;
         color: #b28b4d;
         font-family: "Fraunces", serif;
         font-size: 1.2rem;
@@ -105,7 +187,7 @@
         width: min(100%, 360px);
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
+        gap: 0.75rem;
         margin-inline: auto;
       }
 
@@ -147,7 +229,7 @@
       .leaf { background: #84B262; color: #26351d; }
 
       .component-label {
-        margin: 2rem 0 0.8rem;
+        margin: 0 0 0.8rem;
         color: #98614f;
         font-size: 0.65rem;
         font-weight: 700;
@@ -159,8 +241,30 @@
       .frame-cards {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.25rem;
-        margin-top: 3rem;
+        gap: 0.9rem;
+        align-items: stretch;
+        margin-top: 1.8rem;
+      }
+
+      .showcase-grid {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.5fr);
+        align-items: start;
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+        margin-top: 0.9rem;
+      }
+
+      .palette-panel,
+      .components-panel {
+        min-width: 0;
+      }
+
+      .palette-panel .component-label {
+        margin-top: 0;
+      }
+
+      .components-panel .frame-cards {
+        margin-top: 0.7rem;
       }
 
       .frame-card {
@@ -168,7 +272,7 @@
         width: 100%;
         margin-inline: auto;
         display: flex;
-        padding: 1.2rem;
+        padding: 0.9rem;
         border: 2px solid #a97835;
         border-radius: 24px;
         background:
@@ -261,12 +365,12 @@
         position: relative;
         z-index: 1;
         flex: 1;
-        min-height: 300px;
+        min-height: 200px;
         display: grid;
-        grid-template-rows: auto minmax(2.5em, auto) minmax(8em, 1fr) auto;
+        grid-template-rows: auto minmax(2em, auto) minmax(5em, 1fr) auto;
         align-content: stretch;
         justify-items: center;
-        padding: 1.5rem;
+        padding: 0.85rem;
         border: 4px double #c18b3b;
         border-radius: 16px;
         background:
@@ -277,7 +381,7 @@
       }
 
       .frame-content .frame-kicker {
-        margin: 0 0 0.7rem;
+        margin: 0 0 0.45rem;
         color: #9e7640;
         font-size: 0.62rem;
         font-weight: 700;
@@ -286,25 +390,25 @@
       }
 
       .frame-content h2 {
-        min-height: 2.5em;
+        min-height: 2em;
         display: grid;
         align-items: center;
         margin: 0;
         color: #593f45;
         font-family: "Fraunces", serif;
-        font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+        font-size: clamp(1.05rem, 2vw, 1.4rem);
         font-weight: 600;
       }
 
       .frame-content p:not(.frame-kicker) {
-        min-height: 8em;
+        min-height: 4.5em;
         display: grid;
         align-items: center;
         max-width: 28ch;
-        margin: 0.65rem 0 1.2rem;
+        margin: 0.3rem 0 0.5rem;
         color: #75676a;
         font-family: "Fraunces", serif;
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-style: italic;
         line-height: 1.5;
       }
@@ -326,9 +430,14 @@
       }
 
       @media (max-width: 620px) {
-        .frame-cards {
+        .showcase-grid {
           grid-template-columns: 1fr;
           gap: 2rem;
+        }
+
+        .frame-cards {
+          grid-template-columns: 1fr;
+          gap: 1.6rem;
         }
 
         .frame-card {
@@ -337,19 +446,19 @@
         }
 
         .frame-content {
-          min-height: 250px;
-          padding: 1.5rem;
+          min-height: 220px;
+          padding: 1.2rem;
         }
       }
 
       @media (min-width: 621px) and (max-width: 760px) {
         .frame-card {
-          padding: 1rem;
+          padding: 0.8rem;
         }
 
         .frame-content {
-          min-height: 270px;
-          padding: 1.2rem 0.8rem;
+          min-height: 220px;
+          padding: 1rem 0.65rem;
         }
       }
 
@@ -358,7 +467,7 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 0.75rem;
-        margin-top: 1.8rem;
+        margin-top: 1.5rem;
       }
 
       button {
@@ -443,7 +552,7 @@
 
       @media (max-width: 480px) {
         body {
-          padding: 1rem;
+          padding: 4rem 1rem 1rem;
         }
 
         main {
@@ -454,9 +563,26 @@
           width: min(100%, 300px);
         }
       }
+
+      @media (min-width: 621px) and (max-width: 900px) {
+        .showcase-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+      }
     </style>
   </head>
   <body>
+    <button
+      class="theme-switch"
+      type="button"
+      role="switch"
+      aria-checked="false"
+      aria-label="Mudar para tema verde"
+    >
+      <span class="theme-switch-track" aria-hidden="true"></span>
+      <span id="theme-switch-label">Verde</span>
+    </button>
     <main>
       <p class="eyebrow">Design system · Dashboard</p>
       <h1>Uma paleta Rococó</h1>
@@ -467,15 +593,20 @@
 
       <div class="ornament" aria-hidden="true">❧</div>
 
-      <section class="swatches" aria-label="Cores da paleta">
-        <div class="swatch pink">Rosa suave <span>#E5C3CE</span></div>
-        <div class="swatch sage">Sálvia <span>#d1e5c3</span></div>
-        <div class="swatch berry">Framboesa <span>#B2627D</span></div>
-        <div class="swatch leaf">Verde folha <span>#84B262</span></div>
-      </section>
+      <div class="showcase-grid">
+        <section class="palette-panel" aria-labelledby="palette-heading">
+          <p class="component-label" id="palette-heading">Paleta de cores</p>
+          <section class="swatches" aria-label="Cores da paleta">
+            <div class="swatch pink">Rosa suave <span>#E5C3CE</span></div>
+            <div class="swatch sage">Sálvia <span>#d1e5c3</span></div>
+            <div class="swatch berry">Framboesa <span>#B2627D</span></div>
+            <div class="swatch leaf">Verde folha <span>#84B262</span></div>
+          </section>
+        </section>
 
-      <p class="component-label">Componente · Card com moldura Rococó</p>
-      <section class="frame-cards" aria-label="Exemplos de cards com moldura Rococó">
+        <section class="components-panel" aria-labelledby="components-heading">
+          <p class="component-label" id="components-heading">Componente · Card com moldura Rococó</p>
+          <section class="frame-cards" aria-label="Exemplos de cards com moldura Rococó">
         <article class="frame-card" aria-labelledby="frame-card-title-1">
           <div class="frame-flourish top" aria-hidden="true">
             <svg viewBox="0 0 400 64">
@@ -533,13 +664,27 @@
             <button class="frame-action" type="button">Lorem ipsum</button>
           </div>
         </article>
-      </section>
+          </section>
+        </section>
+      </div>
 
       <div class="actions">
         <button class="secondary" type="button"><span>Botão</span></button>
       </div>
     </main>
     <script>
+      const themeSwitch = document.querySelector(".theme-switch");
+      const themeSwitchLabel = document.querySelector("#theme-switch-label");
+
+      themeSwitch.addEventListener("click", () => {
+        const isGreen = document.documentElement.dataset.theme !== "green";
+        document.documentElement.dataset.theme = isGreen ? "green" : "pink";
+        themeSwitch.setAttribute("aria-checked", String(isGreen));
+        const nextTheme = isGreen ? "rosa" : "verde";
+        themeSwitch.setAttribute("aria-label", `Mudar para tema ${nextTheme}`);
+        themeSwitchLabel.textContent = nextTheme[0].toUpperCase() + nextTheme.slice(1);
+      });
+
       const goldButton = document.querySelector(".secondary");
 
       goldButton.addEventListener("pointermove", (event) => {
